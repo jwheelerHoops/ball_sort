@@ -92,7 +92,7 @@ function checkTubeComplete(tube, color) {
 }
 
 function dropBall(ball, tube) {
-    tube.target.append(ball);
+    tube.target.prepend(ball);
     ball.classList.toggle("selected");
     clearErrors();
 
