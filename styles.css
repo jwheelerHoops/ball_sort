@@ -3,57 +3,60 @@ body {
     background-color: white;
     margin: 0;
     padding: 0;   
-}
-
-.container {
-    width: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.header {
+/* common */
+.section {
     flex: 1;
+    padding: 0;
+}
+
+.header, .messages, .game {
+    background-color: white;
+}
+
+/* header section */
+.header {
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ebebeb;
-    padding: 25px 0;
+    background-color: gray;
 }
 
 .header-txt {
+    flex: 1;
+    text-align: center;
     color: black;
     font-style: italic;
+    font-size: 36px;
     font-weight: 500;
 }
 
+/* messages section */
 .messages {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 #error-message {
     height: 25px;
 }
 
-.game {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 20px 0;
+/* game section */
+.game-header {
+    color: #1F2937;
+    font-size: 36px;
+    font-weight: 900;
+    padding: 40px;
+    text-align: center;
 }
 
 .tubes-container {
-    flex: 1;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -63,7 +66,7 @@ body {
 
 .tube {
     height: 260px;
-    width: 80px;
+    max-width: 80px;
     padding: 15px 15px 0 15px;
     margin: 0 25px;
     background-color: silver;
