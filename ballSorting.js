@@ -4,7 +4,35 @@ const tubes = document.querySelectorAll("div.tube");
 const balls = document.querySelectorAll("div.ball");
 let selectedBalls = document.querySelectorAll("div.selected");
 
-function chooseRandomColors() {
+function initializeGame() {
+    const tubesContainer = document.getElementById("tubes-container");
+    let randomDifficulty = Math.floor(Math.random() * (availableColors.length - 3) + 3);
+
+    for (let f = 0; f < randomDifficulty; f++) {
+        tubesContainer.append(createTube(filled=true));
+    };
+
+    tubesContainer.append(createTube());
+    tubesContainer.append(createTube());
+}
+
+function createTube(filled=false) {
+    const tube = document.createElement("div");
+    tube.classList.add("tube");
+
+    if (filled == true) {
+        for (let b = 0; b < 4; b++) {
+            const ball = document.createElement("div");
+            ball.classList.add("ball");
+
+            tube.append(ball);
+        };
+    };
+
+    return tube;
+}
+
+function chooseRandomColors(diff) {
     let gameColors = []
     let attemptedColors = [];
 
@@ -19,13 +47,17 @@ function chooseRandomColors() {
             gameColors.push(color);
             i++;
         };
-    } while(i < 3);
+    } while(i < diff);
 
     return gameColors;
 }
 
 function randomizeBalls() {
-    let colors = chooseRandomColors();
+    const tubes = document.querySelectorAll("div.tube");
+    const balls = document.querySelectorAll("div.ball");
+    let diff = (tubes.length - 2);
+    console.log(diff);
+    let colors = chooseRandomColors(diff);
     let colorList = [];
 
     for (let i = 0; i < colors.length; i++) {
@@ -158,5 +190,6 @@ tubes.forEach((tube) => {
 })
 
 document.addEventListener("DOMContentLoaded", function() {
+    initializeGame();
     randomizeBalls();
 });
